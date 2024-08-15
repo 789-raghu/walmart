@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Demand Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select, input[type="date"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Demand Prediction</h1>
+        <form method="post">
+            <label for="warehouse">Warehouse:</label>
+            <select id="warehouse" name="warehouse" required>
+                <option value="">Select Warehouse</option>
+                <option value="Whse_J">Whse_J</option>
+                <option value="Whse_S">Whse_S</option>
+                <option value="Whse_C">Whse_C</option>
+                <option value="Whse_A">Whse_A</option>
+            </select>
+
+            <label for="product_category">Product Category:</label>
+            <select id="product_category" name="product_category" required>
+                <option value="">Select Product Category</option>
+                <option value="Category_028">Category_028</option>
+                <option value="Category_006">Category_006</option>
+                <option value="Category_001">Category_001</option>
+                <option value="Category_019">Category_019</option>
+                <option value="Category_005">Category_005</option>
+                <option value="Category_030">Category_030</option>
+                <option value="Category_032">Category_032</option>
+                <option value="Category_011">Category_011</option>
+                <option value="Category_033">Category_033</option>
+                <option value="Category_007">Category_007</option>
+                <option value="Category_015">Category_015</option>
+                <option value="Category_021">Category_021</option>
+                <option value="Category_024">Category_024</option>
+                <option value="Category_026">Category_026</option>
+                <option value="Category_023">Category_023</option>
+                <option value="Category_022">Category_022</option>
+                <option value="Category_009">Category_009</option>
+                <option value="Category_003">Category_003</option>
+                <option value="Category_004">Category_004</option>
+                <option value="Category_018">Category_018</option>
+                <option value="Category_020">Category_020</option>
+                <option value="Category_013">Category_013</option>
+                <option value="Category_008">Category_008</option>
+                <option value="Category_017">Category_017</option>
+                <option value="Category_031">Category_031</option>
+                <option value="Category_025">Category_025</option>
+                <option value="Category_010">Category_010</option>
+                <option value="Category_029">Category_029</option>
+                <option value="Category_012">Category_012</option>
+                <option value="Category_002">Category_002</option>
+                <option value="Category_014">Category_014</option>
+                <option value="Category_027">Category_027</option>
+                <option value="Category_016">Category_016</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result">
+                <p>Predicted Order Demand: {{ prediction }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
